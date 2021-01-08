@@ -1,0 +1,490 @@
+<app-header></app-header>
+<div class="header-1"></div>
+<!-- Subheader Start -->
+<div class="subheader bg-cover bg-center dark-overlay" style="background-image: url('assets/img/subheader.jpg')">
+    <div class="container">
+        <div class="subheader-inner">
+            <h1 class="text-white">Featured Listing</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"> <i class="fas fa-home"></i> </a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Featured Listing</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Subheader End -->
+<!-- Listings Start -->
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Posts Start -->
+            <div class="col-lg-12">
+                <div class="row">
+                    <!-- Listing Start -->
+                    <div class="col-md-6" *ngFor="let feature of featurelistdata">
+                        <div class="listing" *ngFor="let featuredata of feature.Results">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1/{{ featuredata.Id }}'><img src="{{ featuredata.Property.Photo[0].HighResPath }}" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge featured"> <i class="fas fa-star"></i> </span>
+                                    <span class="listing-badge pending"> Pending</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <div class="listing-author-body">
+                                        <span class="listing-date"> {{ featuredata.Property.Photo[0].LastUpdated }}</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1/{{ featuredata.Id }}' title="{{ featuredata.Property.Address.AddressText }}">{{ featuredata.Property.Address.AddressText }}</a> </h5>
+                                <span class="listing-price">{{ featuredata.Property.Price }} </span>
+                                <p class="listing-text">{{ featuredata.PublicRemarks }}</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">{{ featuredata.Building.Bedrooms }}</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">{{ featuredata.Building.BathroomTotal }}</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">{{ featuredata.Land.SizeTotal }}</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1/{{ featuredata.Id }}' class="btn-custom btn-sm secondary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Listing End -->
+                    <!-- Listing Start -->
+                    <!-- <div class="col-md-6">
+                        <div class="listing">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1'><img src="assets/img/listings/2.jpg" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge featured"> <i class="fas fa-star"></i> </span>
+                                    <span class="listing-badge sale"> On Sale</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <img src="assets/img/people/1.jpg" alt="author">
+                                    <div class="listing-author-body">
+                                        <p> <a href="#">Randy Blue</a> </p>
+                                        <span class="listing-date">March 3, 2020</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>
+                                                <li> <a routerLink='/listing-detail-v1'> <i class="fas fa-bookmark"></i> Book Tour</a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="Theodore Lowe, Azusa New York 39531">Theodore Lowe, Azusa New York 39531</a> </h5>
+                                <span class="listing-price">2,300$ <span>/month</span> </span>
+                                <p class="listing-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">2</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">1</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">1,780</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1' class="btn-custom btn-sm secondary">View Details</a>
+                                    <a href="#" data-toggle="tooltip" title="Gallery" class="listing-gallery"> <i class="fas fa-camera"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Listing End -->
+                    <!-- Listing Start -->
+                    <!-- <div class="col-md-6">
+                        <div class="listing">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1'><img src="assets/img/listings/3.jpg" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge pending"> Pending</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <img src="assets/img/people/2.jpg" alt="author">
+                                    <div class="listing-author-body">
+                                        <p> <a href="#">Heather Mclayn</a> </p>
+                                        <span class="listing-date">March 3, 2020</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>
+                                                <li> <a routerLink='/listing-detail-v1'> <i class="fas fa-bookmark"></i> Book Tour</a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="Iris Watson, Frederick Nebraska 20620">Iris Watson, Frederick Nebraska 20620</a> </h5>
+                                <span class="listing-price">3,500$ <span>/month</span> </span>
+                                <p class="listing-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">3</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">2</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">2,499</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1' class="btn-custom btn-sm secondary">View Details</a>
+                                    <a href="#" data-toggle="tooltip" title="Gallery" class="listing-gallery"> <i class="fas fa-camera"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Listing End -->
+                    <!-- Listing Start -->
+                    <!-- <div class="col-md-6">
+                        <div class="listing">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1'><img src="assets/img/listings/4.jpg" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge sale">On Sale</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <img src="assets/img/people/2.jpg" alt="author">
+                                    <div class="listing-author-body">
+                                        <p> <a href="#">Heather Mclayn</a> </p>
+                                        <span class="listing-date">March 3, 2020</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>
+                                                <li> <a routerLink='/listing-detail-v1'> <i class="fas fa-bookmark"></i> Book Tour</a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="Iris Watson, Frederick Nebraska 20620">Iris Watson, Frederick Nebraska 20620</a> </h5>
+                                <span class="listing-price">3,500$ <span>/month</span> </span>
+                                <p class="listing-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">3</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">2</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">2,499</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1' class="btn-custom btn-sm secondary">View Details</a>
+                                    <a href="#" data-toggle="tooltip" title="Gallery" class="listing-gallery"> <i class="fas fa-camera"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Listing End -->
+                    <!-- Listing Start -->
+                    <!-- <div class="col-md-6">
+                        <div class="listing">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1'><img src="assets/img/listings/5.jpg" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge sale"> On Sale</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <img src="assets/img/people/2.jpg" alt="author">
+                                    <div class="listing-author-body">
+                                        <p> <a href="#">Heather Mclayn</a> </p>
+                                        <span class="listing-date">March 3, 2020</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>
+                                                <li> <a routerLink='/listing-detail-v1'> <i class="fas fa-bookmark"></i> Book Tour</a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="Iris Watson, Frederick Nebraska 20620">Iris Watson, Frederick Nebraska 20620</a> </h5>
+                                <span class="listing-price">3,500$ <span>/month</span> </span>
+                                <p class="listing-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">3</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">2</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">2,499</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1' class="btn-custom btn-sm secondary">View Details</a>
+                                    <a href="#" data-toggle="tooltip" title="Gallery" class="listing-gallery"> <i class="fas fa-camera"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Listing End -->
+                    <!-- Listing Start -->
+                    <!-- <div class="col-md-6">
+                        <div class="listing">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1'><img src="assets/img/listings/1.jpg" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge rent"> Rental</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <img src="assets/img/people/4.jpg" alt="author">
+                                    <div class="listing-author-body">
+                                        <p> <a href="#">Mike Stanly</a> </p>
+                                        <span class="listing-date">March 3, 2020</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>
+                                                <li> <a routerLink='/listing-detail-v1'> <i class="fas fa-bookmark"></i> Book Tour</a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="Iris Watson, Frederick Nebraska 20620">Iris Watson, Frederick Nebraska 20620</a> </h5>
+                                <span class="listing-price">4,600$ <span>/month</span> </span>
+                                <p class="listing-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">3</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">2</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">2,499</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1' class="btn-custom btn-sm secondary">View Details</a>
+                                    <a href="#" data-toggle="tooltip" title="Gallery" class="listing-gallery"> <i class="fas fa-camera"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Listing End -->
+                    <!-- Listing Start -->
+                    <!-- <div class="col-md-6">
+                        <div class="listing">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1'><img src="assets/img/listings/6.jpg" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge featured"> <i class="fas fa-star"></i> </span>
+                                    <span class="listing-badge pending"> Pending</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <img src="assets/img/people/2.jpg" alt="author">
+                                    <div class="listing-author-body">
+                                        <p> <a href="#">Heather Mclayn</a> </p>
+                                        <span class="listing-date">March 3, 2020</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>
+                                                <li> <a routerLink='/listing-detail-v1'> <i class="fas fa-bookmark"></i> Book Tour</a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="Iris Watson, Frederick Nebraska 20620">Iris Watson, Frederick Nebraska 20620</a> </h5>
+                                <span class="listing-price">3,500$ <span>/month</span> </span>
+                                <p class="listing-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">3</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">2</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">2,499</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1' class="btn-custom btn-sm secondary">View Details</a>
+                                    <a href="#" data-toggle="tooltip" title="Gallery" class="listing-gallery"> <i class="fas fa-camera"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Listing End -->
+                    <!-- Listing Start -->
+                    <!-- <div class="col-md-6">
+                        <div class="listing">
+                            <div class="listing-thumbnail">
+                                <a routerLink='/listing-detail-v1'><img src="assets/img/listings/7.jpg" alt="listing"></a>
+                                <div class="listing-badges">
+                                    <span class="listing-badge featured"> <i class="fas fa-star"></i> </span>
+                                    <span class="listing-badge sale"> On Sale</span>
+                                </div>
+                                <div class="listing-controls">
+                                    <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                                    <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="listing-body">
+                                <div class="listing-author">
+                                    <img src="assets/img/people/1.jpg" alt="author">
+                                    <div class="listing-author-body">
+                                        <p> <a href="#">Randy Blue</a> </p>
+                                        <span class="listing-date">March 3, 2020</span>
+                                    </div>
+                                    <div class="dropdown options-dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul>
+                                                <li> <a href="tel:+123456789"> <i class="fas fa-phone"></i> Call Agent</a> </li>
+                                                <li> <a href="mailto:+123456789"> <i class="fas fa-envelope"></i> Send Message</a> </li>
+                                                <li> <a routerLink='/listing-detail-v1'> <i class="fas fa-bookmark"></i> Book Tour</a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="Theodore Lowe, Azusa New York 39531">Theodore Lowe, Azusa New York 39531</a> </h5>
+                                <span class="listing-price">2,300$ <span>/month</span> </span>
+                                <p class="listing-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="acr-listing-icons">
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                                        <i class="flaticon-bedroom"></i>
+                                        <span class="acr-listing-icon-value">2</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                                        <i class="flaticon-bathroom"></i>
+                                        <span class="acr-listing-icon-value">1</span>
+                                    </div>
+                                    <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                                        <i class="flaticon-ruler"></i>
+                                        <span class="acr-listing-icon-value">1,780</span>
+                                    </div>
+                                </div>
+                                <div class="listing-gallery-wrapper">
+                                    <a routerLink='/listing-detail-v1' class="btn-custom btn-sm secondary">View Details</a>
+                                    <a href="#" data-toggle="tooltip" title="Gallery" class="listing-gallery"> <i class="fas fa-camera"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- Listing End -->
+                </div>
+                <!-- Pagination Start -->
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#"> <i class="fas fa-chevron-left"></i> </a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#"> <i class="fas fa-chevron-right"></i> </a></li>
+                </ul>
+                <!-- Pagination End -->
+            </div>
+            <!-- Posts End -->
+        </div>
+    </div>
+</div>
+<!-- Listings End -->
+<app-footer></app-footer>

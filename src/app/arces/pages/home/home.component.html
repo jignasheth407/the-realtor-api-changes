@@ -1,0 +1,207 @@
+<app-header></app-header>
+<!-- Banner Start -->
+<div class="banner banner-2 p-0">
+    <div class="banner-slider">
+        <div class="banner-item">
+            <div class="banner-inner bg-cover bg-center dark-overlay" style="background-image: url('assets/img/banner/1.jpg')"></div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+<!-- About Section Start -->
+<div class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-lg-30 acr-dots-wrapper acr-single-img-wrapper">
+                <img src="assets/img/listings-list/3.jpg" alt="img">
+                <div class="acr-dots"></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="section-title-wrap mr-lg-30">
+                    <h5 class="custom-primary">About Us</h5>
+                    <h2 class="title">We provide state of the art real estate service</h2>
+                    <p class="subtitle">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </p>
+                    <p class="subtitle">
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Section End -->
+<!-- search -->
+<div class="container">
+<app-submit-listing></app-submit-listing>
+</div>
+<!-- Categories Start -->
+<!-- Categories End -->
+<!-- Listings Slider Start -->
+<div class="section section-padding pt-0 listings">
+    <div class="container">
+        <div class="section-title-wrap section-header flex-header">
+            <div class="section-title-text">
+                <h2 class="title">Featured Properties</h2>
+            </div>
+            <div class="acr-arrows primary-arrows">
+                <i class="slider-prev fas fa-arrow-left slick-arrow"></i>
+                <i class="slider-next fas fa-arrow-right slick-arrow"></i>
+            </div>
+        </div>
+        <div class="listings-slider" *ngFor="let featurelistdetails of featurelistdata">
+            <!-- Listing Start -->
+            <div class="listing" *ngFor="let featurelistown of featurelistdetails.Results">
+                <div class="listing-thumbnail" >
+                    <a routerLink='/listing-detail-v1'><img src="{{ featurelistown.Property.Photo[0].HighResPath }}" alt="listing"></a>
+                    <div class="listing-badges">
+                        <span class="listing-badge featured"> <i class="fas fa-star"></i> </span>
+                        <span class="listing-badge pending"> Pending</span>
+                    </div>
+                    <div class="listing-controls">
+                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
+                    </div>
+                </div>
+                <div class="listing-body" >
+                    <div class="listing-author" >
+                        <!-- <img src="" alt="owner"> -->
+                        <div class="listing-author-body">
+                            <!-- <p> <a href="#">{{ featurelistown.Individual[0].Name }}</a> </p> -->
+                            <span class="listing-date">{{ featurelistown.Property.Photo[0].LastUpdated }}</span>
+                        </div>
+                    </div>
+                    <h5 class="listing-title"> <a routerLink='/listing-detail-v1' title="{{ featurelistown.Property.Address.AddressText }}">{{ featurelistown.Property.Address.AddressText }}</a> </h5>
+                    <span class="listing-price">{{ featurelistown.Property.Price }} </span>
+                    <!-- <span>/month</span> -->
+                    <p class="listing-text">{{ featurelistown.PublicRemarks }}</p>
+                    <div class="acr-listing-icons">
+                        <div class="acr-listing-icon" data-toggle="tooltip" title="Beds">
+                            <i class="flaticon-bedroom"></i>
+                            <span class="acr-listing-icon-value">{{ featurelistown.Building.Bedrooms }}</span>
+                        </div>
+                        <div class="acr-listing-icon" data-toggle="tooltip" title="Bathrooms">
+                            <i class="flaticon-bathroom"></i>
+                            <span class="acr-listing-icon-value">{{ featurelistown.Building.BathroomTotal }}</span>
+                        </div>
+                        <div class="acr-listing-icon" data-toggle="tooltip" title="Square Feet">
+                            <i class="flaticon-ruler"></i>
+                            <span class="acr-listing-icon-value">{{ featurelistown.Land.SizeTotal }}</span>
+                        </div>
+                    </div>
+                    <div class="listing-gallery-wrapper">
+                        <a routerLink='/listing-detail-v1/{{ featurelistown.Id }}' class="btn-custom btn-sm secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing End -->
+        </div>
+    </div>
+</div>
+<!-- Listings Slider End -->
+<!-- Top Listings Start -->
+
+<!-- Top Listings End -->
+<!-- Single Agent Start -->
+
+<!-- Single Agent End -->
+<!-- Agents Start -->
+
+<!-- Agents End -->
+<!-- Blog Posts Start -->
+<div class="section section-padding light-bg">
+    <div class="container">
+        <div class="section-title-wrap section-header">
+<!-- Blog Posts End -->
+<!-- Testimonials Start -->
+<div class="section section-padding">
+    <div class="container">
+        <div class="section-title-wrap section-header">
+            <h5 class="custom-primary">Testimonials</h5>
+            <h2 class="title">What Are People Saying</h2>
+        </div>
+        <div class="row">
+            <!-- Testimonail item start -->
+            <div class="col-lg-4 col-md-6">
+                <div class="acr-testimonial">
+                    <div class="acr-testimonial-body">
+                        <h5>Perfect service</h5>
+                        <div class="acr-rating-wrapper">
+                            <div class="acr-rating">
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                            </div>
+                        </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
+                    </div>
+                    <div class="acr-testimonial-author">
+                        <img src="assets/img/people/1.jpg" alt="testimonial">
+                        <div class="acr-testimonial-author-inner">
+                            <h6>John Mishlen</h6>
+                            <span>Executive CEO at company</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonail item end -->
+            <!-- Testimonail item start -->
+            <div class="col-lg-4 col-md-6">
+                <div class="acr-testimonial">
+                    <div class="acr-testimonial-body">
+                        <h5>Competitive prices</h5>
+                        <div class="acr-rating-wrapper">
+                            <div class="acr-rating">
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                            </div>
+                        </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
+                    </div>
+                    <div class="acr-testimonial-author">
+                        <img src="assets/img/people/2.jpg" alt="testimonial">
+                        <div class="acr-testimonial-author-inner">
+                            <h6>Moe Sondi</h6>
+                            <span>Executive CEO at company</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonail item end -->
+            <!-- Testimonail item start -->
+            <div class="col-lg-4 col-md-12">
+                <div class="acr-testimonial">
+                    <div class="acr-testimonial-body">
+                        <h5>Great agents</h5>
+                        <div class="acr-rating-wrapper">
+                            <div class="acr-rating">
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                                <i class="fas fa-star active"></i>
+                            </div>
+                        </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
+                    </div>
+                    <div class="acr-testimonial-author">
+                        <img src="assets/img/people/3.jpg" alt="testimonial">
+                        <div class="acr-testimonial-author-inner">
+                            <h6>Mandy Floss</h6>
+                            <span>Executive CEO at company</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonail item end -->
+        </div>
+    </div>
+</div>
+<!-- Testimonials End -->
+<app-footer></app-footer>

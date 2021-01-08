@@ -1,0 +1,255 @@
+
+<app-header></app-header>
+<div class="header-1"></div>
+<!-- Banner Start -->
+<div class="banner banner-2 slider-no-padding" >
+    <div  *ngFor="let featurelistdata of featurelistdata">
+    <div  *ngFor="let featurelistdetails of featurelistdata.Results">
+    <div  *ngIf=" featurelistdetails.Id == id  ">
+    <div class="banner-item">
+        <div class="banner-slider">
+            <img class="banner-inner bg-cover bg-center" src="{{ featurelistdetails.Property.Photo[0].HighResPath }}">
+        </div>
+        
+        <div class="acr-listing-details"  >
+            <div class="acr-listing-section">
+                <div class="acr-listing-section-body">
+                    <div class="acr-listing-section-price">
+                        <span>For Sale </span>
+                        <h3>{{ featurelistdetails.Property.Price }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="acr-listing-section">
+                <div class="acr-listing-section-body">
+                    <h4> {{ featurelistdetails.Property.Address.AddressText }}</h4>
+                    <div class="acr-listing-icons">
+                        <div class="acr-listing-icon">
+                            <i class="flaticon-bedroom"></i>
+                            <span>Beds</span>
+                            <span class="acr-listing-icon-value">{{ featurelistdetails.Building.Bedrooms }}</span>
+                        </div>
+                        <div class="acr-listing-icon">
+                            <i class="flaticon-bathroom"></i>
+                            <span>Baths</span>
+                            <span class="acr-listing-icon-value">{{ featurelistdetails.Building.BathroomTotal }}</span>
+                        </div>
+                        <div class="acr-listing-icon">
+                            <i class="flaticon-ruler"></i>
+                            <span>Sqft</span>
+                            <span class="acr-listing-icon-value">{{ featurelistdetails.Land.SizeTotal }}</span>
+                        </div>
+                    </div>
+                    <p>
+                        {{ featurelistdetails.PublicRemarks }}
+                    </p>
+                </div>
+            </div>
+            <div class="acr-listing-section">
+                <div class="acr-listing-section-body">
+                    <div class="acr-listing-meta">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-3 col-sm-3">
+                                <div class="acr-listing-meta-item">
+                                    <span>Type</span>
+                                    <p>{{ featurelistdetails.Property.Type }}</p>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6 col-md-3 col-sm-3">
+                                <div class="acr-listing-meta-item">
+                                    <span>Destination</span>
+                                    <p>{{ featurelistdetails.Property.Address.DisseminationArea }} </p>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-6 col-md-3 col-sm-3">
+                                <div class="acr-listing-meta-item">
+                                    <span>MLS No</span>
+                                    <p>{{ featurelistdetails.MlsNumber }}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-3 col-sm-3">
+                                <div class="acr-listing-meta-item">
+                                    <span>StoriesTotal</span>
+                                    <p>{{ featurelistdetails.Building.StoriesTotal }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="acr-arrows">
+        <i class="slider-prev fas fa-arrow-left slick-arrow"></i>
+        <i class="slider-next fas fa-arrow-right slick-arrow"></i>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+<!-- Banner End -->
+<div class="section listing-wrapper">
+    <div class="container">
+        <div class="row">
+            <!-- Listings Start -->
+            <div class="col-lg-8">
+                <div  *ngFor="let featurelistdata of featurelistdata">
+                <div  *ngFor="let featurelistdetails of featurelistdata.Results">
+                <div  *ngIf=" featurelistdetails.Id == id  ">
+                <!-- Content Start -->
+                <div class="listing-content">
+                    <h4>Property Deatils</h4>
+            
+                    <div class="row">
+                        <div class="col-md-6">
+                                <img src="{{ featurelistdetails.Property.Photo[0].MedResPath }}" alt="post">
+                        </div>
+                        <div class="col-md-6">
+                                <img src="{{ featurelistdetails.Property.Photo[0].LowResPath }}" alt="post">
+                        </div>
+                        <a href="assets/img/listing-single/4.jpg" class="gallery-thumb"></a>
+                        <a href="assets/img/listing-single/5.jpg" class="gallery-thumb"></a>
+                    </div>
+                
+                </div>
+                <!-- Content End -->
+               
+                <div class="section section-padding pt-0 acr-listing-features">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="listing-feature-wrapper">
+                                <div class="listing-feature">
+                                    <i class="flaticon-picture"></i>
+                                    <h6 class="listing-feature-label">Propery Type</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Building.Type }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="fa fa-home"></i>
+                                    <h6 class="listing-feature-label">House Type</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.Type }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="flaticon-chair"></i>
+                                    <h6 class="listing-feature-label">Longitude</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.Address.Longitude }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="fa fa-location-arrow "></i>
+                                    <h6 class="listing-feature-label">Latitude</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.Address.Latitude }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="listing-feature-wrapper">
+                                <div class="listing-feature">
+                                    <i class="flaticon-bathroom"></i>
+                                    <h6 class="listing-feature-label">Bathrooms</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Building.BathroomTotal }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="flaticon-pillow"></i>
+                                    <h6 class="listing-feature-label">Bed Rooms</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Building.Bedrooms }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="flaticon-mailbox"></i>
+                                    <h6 class="listing-feature-label">DisseminationArea</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.Address.DisseminationArea }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="flaticon-ruler"></i>
+                                    <h6 class="listing-feature-label">PermitShowAddresse</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.Address.PermitShowAddresse }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="listing-feature">
+                                    <i class="flaticon-key"></i>
+                                    <h6 class="listing-feature-label">OwnershipType</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.OwnershipType }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="flaticon-garage"></i>
+                                    <h6 class="listing-feature-label">Parking</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.Parking[0].Name }}</span>
+                                </div>
+                            
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="listing-feature">
+                                    <i class="flaticon-ruler"></i>
+                                    <h6 class="listing-feature-label">Lot Size</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Land.SizeTotal }}</span>
+                                </div>
+                                <div class="listing-feature">
+                                    <i class="flaticon-garage"></i>
+                                    <h6 class="listing-feature-label">ParkingSpaceTotal</h6>
+                                    <span class="listing-feature-value">{{ featurelistdetails.Property.ParkingSpaceTotal }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              </div>
+              </div>
+            </div>
+            <!-- Listings End -->
+            <!-- Sidebar Start -->
+            <div class="col-lg-4">
+                <div class="sidebar sticky-sidebar">
+                    <div class="sidebar-widget">
+             <!-- conctect reltor -->
+                <div >
+                <h2>{{agentdetails.firstName}} {{agentdetails.lastName}}</h2>
+                <h6>{{agentdetails.title}}</h6>
+                            <div class="acr-dots-wrapper acr-single-img-wrapper">
+                            <img src="{{agentdetails.imagePath}}" alt="img">
+                            <div class="acr-dots"></div>
+                            </div>
+                            <div>
+                                <br>
+                                <i class="fa fa-phone"><span> &nbsp; {{agentdetails.phoneNo}}</span></i><br>
+                                <i class= "fa fa-envelope"> <span> &nbsp; {{agentdetails.email}}</span></i>
+                                <br>
+                                <div class="form-group">
+                                    <button type="submit" class="btn-custom primary" name="button">Get Prequalified</button>
+                                </div>                       
+                            </div>
+                </div>
+            <!-- Endconctect reltor -->
+                        <h5>Appointment Request</h5>
+                        <!-- Contact Start -->
+                        <form method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Full name" name="email" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email Address" name="email" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Phone Number" name="phone" value="">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" rows="3" placeholder="Enter your message" class="form-control"></textarea>
+                            </div>
+                            <a href="#" class="btn-custom primary light btn-block">Send Message</a>
+                        </form>
+                        <!-- Contact End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar End -->
+           
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+
