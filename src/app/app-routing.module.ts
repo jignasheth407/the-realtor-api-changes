@@ -37,6 +37,7 @@ import { ErrorComponent } from './arces/pages/error/error.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent},
   {path:'home-v2',component:HomeTwoComponent},
   {path:'home-v3',component:HomeThreeComponent},
   {path:'home-v4',component:HomeFourComponent},
@@ -56,6 +57,7 @@ const routes: Routes = [
   {path:'legal',component:LegalComponent},
   {path:'listing-grid',component:ListingGridComponent},
   {path:'listing-list',component:ListingListComponent},
+  {path:'listing-map',component:ListingMapComponent},
   {path:'listing-map/:mlsno',component:ListingMapComponent},
   {path:'listing-detail-v1/:id',component:ListingDetailOneComponent},
   {path:'listing-detail-v2',component:ListingDetailTwoComponent},

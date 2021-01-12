@@ -50,6 +50,7 @@ import { ListingSidebarComponent } from './arces/layouts/listing-sidebar/listing
 import { PreloaderComponent } from './arces/layouts/preloader/preloader.component';
 import { HeaderFiveComponent } from './arces/layouts/header-five/header-five.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
       Location, {

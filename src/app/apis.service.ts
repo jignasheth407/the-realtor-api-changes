@@ -11,6 +11,7 @@ export class APIsService {
  featuringlist(){
     let url = "https://realtorapi.yellow-chips.com/realtor/1/featuredlisting/all";
     return this.http.get(url);
+               
   }
 
   agentdetail(){
@@ -22,5 +23,32 @@ export class APIsService {
      let url = "https://realtorapi.yellow-chips.com/realtor/1/mls/ReferenceNumber="+data;
      return this.http.get(url);
   }
+ 
+
+  subcrption(data:any){
+    console.log();
+    let url = "https://realtorapi.yellow-chips.com/NewsLetters";
+    return this.http.post(url,data);
+ }
+
+ visitors(data : any){
+   let url = "https://realtorapi.yellow-chips.com/visitors";
+   return this.http.post(url,data);                
+ }
+
+
+ users(data : any){
+   let url = "https://realtorapi.yellow-chips.com/users";
+   return this.http.post(url,data);
+                
+ }
+ 
+
+ login(data : any){
+  let url = "https://realtorapi.yellow-chips.com/users/authenticate";
+  return this.http.post(url,data);
+            
+ }
+ 
   
 }

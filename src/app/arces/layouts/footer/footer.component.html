@@ -43,19 +43,22 @@
                         </div>
                     </div>
                     <div>
-                        <form method="">
+                        <form [formGroup]='subd' (ngSubmit)="subcripdata()">
                         <div class="row">
                             <div class="col-md-6 form-group " >
-                                <input type="text" class="form-control" placeholder="First Name" name="fname" value="">
+                                <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName"  required>
+                                <span *ngIf="firstname.invalid && firstname.touched " class="error">*Required</span>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" placeholder="last Name" name="fname" value="">
+                                <input type="text" class="form-control"  placeholder="last Name" formControlName="LastName" required>
+                                <span *ngIf="lastname.invalid && lastname.touched " class="error">*Required</span>
                             </div>
                             <div class="col-md-9 pt-2 form-group">
-                                <input type="email" class="form-control" placeholder="type full email" name="fname" value="">
+                                <input type="email" class="form-control"  placeholder="type full email" formControlName="Email" required>
+                                <span *ngIf="email.invalid && email.touched" class="error">*Required</span>
                             </div>
                             <div class="col-sm-3 pt-2 form-group">
-                                <button type="submit" class="btn-custom primary" name="button">Subscribe</button>
+                                <button type="submit" class="btn-custom primary"  name="submit">Subscribe</button>
                             </div>
                         </div>
                     </form>
