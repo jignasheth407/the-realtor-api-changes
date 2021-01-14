@@ -23,7 +23,7 @@ export class SubmitListingComponent implements OnInit {
       this.mlsnodata = data;
       this.search=true;
     },(error)=>{
-       alert("enter the proper input..!!");
+       alert("Somthing Went Wrong..!!");
        this.router.navigate(['/home']);
     })
 

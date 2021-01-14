@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class APIsService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient , private router : Router) { }
 
  featuringlist(){
     let url = "https://realtorapi.yellow-chips.com/realtor/1/featuredlisting/all";
@@ -38,6 +39,7 @@ export class APIsService {
 
 
  users(data : any){
+   //registration api
    let url = "https://realtorapi.yellow-chips.com/users";
    return this.http.post(url,data);
                 
@@ -48,6 +50,21 @@ export class APIsService {
   let url = "https://realtorapi.yellow-chips.com/users/authenticate";
   return this.http.post(url,data);
             
+ }
+
+ loggedin(){
+   return !!localStorage.getItem('token');
+ }
+
+ logoutuser(){
+
+   localStorage.removeItem('token');
+   this.router.navigate(['./login']);
+ }
+
+ userprofile(){
+  let url = "https://realtorapi.yellow-chips.com/Users";
+  return this.http.get(url);
  }
  
   

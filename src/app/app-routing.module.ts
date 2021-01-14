@@ -33,6 +33,8 @@ import { ProfileSavedListingComponent } from './arces/pages/profile-saved-listin
 import { ServicesComponent } from './arces/pages/services/services.component';
 import { SubmitListingComponent } from './arces/pages/submit-listing/submit-listing.component';
 import { ErrorComponent } from './arces/pages/error/error.component';
+import { AuthGuard } from './auth.guard';
+
 
 
 const routes: Routes = [
@@ -65,8 +67,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'pricing',component:PricingComponent},
-  {path:'profile',component:ProfileComponent},
-  {path:'profile-listing',component:ProfileListingComponent},
+  {path:'profile',canActivate : [AuthGuard],component:ProfileComponent},
+  {path:'profile-listing',canActivate : [AuthGuard],component:ProfileListingComponent},
   {path:'profile-saved-listing',component:ProfileSavedListingComponent},
   {path:'services',component:ServicesComponent},
   {path:'submit-listing',component:SubmitListingComponent},

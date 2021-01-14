@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIsService } from '../../../apis.service';
-import { FormGroup , FormControl } from '@angular/forms';
+import { FormGroup , FormControl , Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,24 +11,40 @@ import { FormGroup , FormControl } from '@angular/forms';
 export class LoginComponent implements OnInit {
   
    loginuser = new FormGroup({
-    UserName : new FormControl(''),
-    Password : new FormControl(''),
+    UserName : new FormControl('' , Validators.required),
+    Password : new FormControl('' , Validators.required),
    })
 
-  constructor(private http : APIsService) { }
+   get username(){ return this.loginuser.get('UserName')}
+   get pwd(){ return this.loginuser.get('Password')}
+
+  constructor(private http : APIsService ,  private router : Router) { }
 
   ngOnInit(): void {
+    localStorage.setItem('sessionuser',this.loginuser.value)
   }
 
+  dataobj : any ='';
+
   loggeduser(){
-    console.log(this.loginuser.value);
-    this.http.login(this.loginuser.value).subscribe((data)=>{
-      console.log(data);
+    var name = this.loginuser.get('UserName').value;
+    var pass = this.loginuser.get('Password').value;
+    if(name == "" && pass == "")
+    {
+      alert("invalid Username/Password...!!")
     }
-    // ,(error)=>{
-    //  alert("invalid Username/Password...!!")
-    // }
-    )
+    else{
+      this.http.login(this.loginuser.value).subscribe((data)=>{
+        this.dataobj = data;
+        localStorage.setItem('token',this.dataobj.token)
+        this.router.navigate(['/profile']);
+     }
+     ,(error)=>{
+      alert("invalid Username/Password...!!")
+     }
+     )
+    }
+   
   }
 
 }

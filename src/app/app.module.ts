@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule  } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,6 +52,7 @@ import { PreloaderComponent } from './arces/layouts/preloader/preloader.componen
 import { HeaderFiveComponent } from './arces/layouts/header-five/header-five.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -108,6 +110,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
+    AuthGuard,
       Location, {
         provide: LocationStrategy,
         useClass: PathLocationStrategy
