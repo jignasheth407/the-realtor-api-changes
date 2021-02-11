@@ -14,13 +14,38 @@ export class ListingGridComponent implements OnInit {
     this.apidata.featuringlist().subscribe(data=>{
          console.log(data);
          this.featurelistdata = data;
+         this.totalrecords =   this.featurelistdata.length;
     })
-
+    this.userinfo = JSON.parse(localStorage.getItem('userdetails'));
    }
 
    featurelistdata :any =[];
+   totalrecords="";
+   page = 1;
+   userinfo :any = [];
 
   ngOnInit(): void {
   }
+
+  saveproperty(propertyid :any){
+    console.log(propertyid);
+    //saveprorperty in login
+    if(this.userinfo == null){
+      alert("To Save The Property Please Login..!!")
+    }else{
+     let obj = {
+       id : 1,
+       companyId : 1,
+       userId : this.userinfo.id,
+       referenceNumber : propertyid,
+       propertyID : propertyid
+     }
+    this.apidata.addsavelist(obj).subscribe(data=>{
+      alert("Property Saved..!")
+    },error=>{
+     alert("Something Went Wrong Property Not Saved..!")
+   })
+    }
+   }
 
 }

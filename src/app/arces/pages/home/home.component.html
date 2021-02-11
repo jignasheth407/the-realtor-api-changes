@@ -45,14 +45,14 @@
             <div class="section-title-text">
                 <h2 class="title">Featured Properties</h2>
             </div>
-            <div class="acr-arrows primary-arrows">
+            <!-- <div class="acr-arrows primary-arrows">
                 <i class="slider-prev fas fa-arrow-left slick-arrow"></i>
                 <i class="slider-next fas fa-arrow-right slick-arrow"></i>
-            </div>
+            </div> -->
         </div>
         <div class="listings-slider" *ngFor="let featurelistdetails of featurelistdata">
             <!-- Listing Start -->
-            <div class="listing" *ngFor="let featurelistown of featurelistdetails.Results">
+            <div class="listing" *ngFor="let featurelistown of featurelistdetails.Results | paginate : { id : 'listing_pagination', itemsPerPage : 5,currentPage : page,totalItems:totalrecords }">
                 <div class="listing-thumbnail" >
                     <a routerLink='/listing-detail-v1'><img src="{{ featurelistown.Property.Photo[0].HighResPath }}" alt="listing"></a>
                     <div class="listing-badges">
@@ -60,7 +60,7 @@
                         <span class="listing-badge pending"> Pending</span>
                     </div>
                     <div class="listing-controls">
-                        <a href="#" class="favorite"><i class="far fa-heart"></i></a>
+                        <a  class="favorite" (click)="saveproperty(featurelistown.MlsNumber)"><i class="far fa-heart"></i></a>
                         <a href="#" class="compare"><i class="fas fa-sync-alt"></i></a>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="listing-gallery-wrapper">
-                        <a routerLink='/listing-detail-v1/{{ featurelistown.Id }}' class="btn-custom btn-sm secondary">View Details</a>
+                        <a routerLink='/listing-detail-v1/{{ featurelistown.Id }}/{{ featurelistown.MlsNumber }}' class="btn-custom btn-sm secondary">View Details</a>
                     </div>
                 </div>
             </div>
@@ -99,6 +99,11 @@
         </div>
     </div>
 </div>
+  <!-- Pagination Start -->
+  <div>
+    <pagination-controls class="pagination "  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>
+ <!-- Pagination End -->
 <!-- Listings Slider End -->
 <!-- Top Listings Start -->
 

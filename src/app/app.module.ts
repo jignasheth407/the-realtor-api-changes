@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { HttpClientModule  } from '@angular/common/http';
-
+import { HttpClientModule ,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokeInterceptorService } from './toke-interceptor.service';
+import { APIsService } from './apis.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +54,8 @@ import { HeaderFiveComponent } from './arces/layouts/header-five/header-five.com
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ForgotpasswordComponent } from './arces/pages/forgotpassword/forgotpassword.component';
 
 @NgModule({
   declarations: [
@@ -100,17 +103,24 @@ import { AuthGuard } from './auth.guard';
     BlogSidebarComponent,
     ListingSidebarComponent,
     PreloaderComponent,
-    HeaderFiveComponent
+    HeaderFiveComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
-    AuthGuard,
+    APIsService,
+    AuthGuard,{
+      provide : HTTP_INTERCEPTORS,
+      useClass : TokeInterceptorService,
+      multi : true,
+    },
       Location, {
         provide: LocationStrategy,
         useClass: PathLocationStrategy

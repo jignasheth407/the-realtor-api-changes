@@ -57,7 +57,7 @@
 <div class="section pt-0">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="section-title-wrap section-header">
                     <h5 class="custom-primary">Contact Us</h5>
                     <h2 class="title">Got Any Questions?</h2>
@@ -67,51 +67,82 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Full Name</label>
-                                <input type="text" class="form-control" placeholder="Full Name" formControlName="FirstName">
+                                <input type="text" class="form-control" placeholder="Full Name" formControlName="FirstName" required>
+                                <span *ngIf="firstname.invalid && firstname.touched" class="error">*Required</span>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Last Name</label>
                                 <input type="text" class="form-control" placeholder="Subject" formControlName="LastName">
+                                <span *ngIf="lastname.invalid && lastname.touched" class="error">*Required</span>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Phone Number</label>
                                 <input type="text" class="form-control" placeholder="Phone Number" formControlName="PhoneNo">
+                                <span *ngIf="phoneno.invalid && phoneno.touched" class="error">*Required</span>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Email Address</label>
                                 <input type="email" class="form-control" placeholder="Email Address" formControlName="Email">
+                                <span *ngIf="email.invalid && email.touched" class="error">*Required</span>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Subject</label>
                                 <input type="text" class="form-control" placeholder="Email Address" formControlName="Subject">
+                                <span *ngIf="subject.invalid && subject.touched" class="error">*Required</span>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Your Message</label>
                                 <textarea class="form-control" placeholder="Type your message..." formControlName="Message" rows="7"></textarea>
+                                <span *ngIf="msg.invalid && msg.touched" class="error">*Required</span>
                             </div>
                         </div>
                         <button type="submit" class="btn-custom primary" name="button">Send Message</button>
                     </form>
                 </div>
             </div>
-            <div class="col-lg-6 mb-lg-30">
+            <div class="col-lg-12" *ngIf="contectblock">
                 <div class="acr-locations bg-bottom bg-norepeat" style="background-image: url('assets/img/misc/bldg.png')">
                    <div>
                         <h5>User's list</h5>
-                        <table>
-                            <tr>
-                                <td><p>Radwik Botson</p><i class="fa fa-trash"></i></td>
-                                <td><p>Stafina Helenson</p><i class="fa fa-trash"></i></td>
-                                <td><p>Jerry steppon</p><i class="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td><p>Sammy Roopsten</p><i class="fa fa-trash"></i></td>
-                                <td><p>Mark Fard</p><i class="fa fa-trash"></i></td>
-                                <td><p>Kristen Pitinson</p><i class="fa fa-trash"></i></td>
-                            </tr>
-                        </table>
+                        <table class="table" *ngFor="let contectdata of contectquerydata | paginate : { id : 'listing_pagination', itemsPerPage : 2,currentPage : page,totalItems:totalrecords }">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">CompanyID</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">FirstName</th>
+                                <th scope="col">LastName</th>
+                                <th scope="col">Message</th>
+                                <th scope="col">PhoneNo</th>
+                                <th scope="col">Subject</th>
+                                <th scope="col">IsReplied</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">{{ contectdata.id }}</th>
+                                <td>{{ contectdata.companyId }}</td>
+                                <td>{{ contectdata.email }}</td>
+                                <td>{{ contectdata.firstName }}</td>
+                                <td>{{ contectdata.lastName }}</td>
+                                <td>{{ contectdata.message }}</td>
+                                <td>{{ contectdata.phoneNo }}</td>
+                                <td>{{ contectdata.subject }}</td>
+                                <td *ngIf="contectdata.isReplied else no">Yes</td>
+                                <ng-template  #no>
+                                    <td>No</td>
+                                </ng-template>
+                                <td><a data-toggle="tooltip" title="delete" class="listing-gallery" (click)="vistdelete(contectdata.id)"><i class="fa fa-trash"></i></a></td>
+                              </tr>
+                            </tbody>
+                          </table>
                    </div>
-                    <div class="row">
+                     <!-- Pagination Start -->
+                   <div>
+                    <pagination-controls class="pagination "  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+                  </div>
+                    <!-- Pagination End -->
+                    <!-- <div class="row">
                          <div class="col-lg-6">
                             <div class="acr-location">
                                 <h5>User Query Detail</h5>
@@ -142,9 +173,8 @@
                             </form>
                         </div>
                     <div>
-
                     </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

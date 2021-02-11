@@ -18,13 +18,22 @@ export class LoginComponent implements OnInit {
    get username(){ return this.loginuser.get('UserName')}
    get pwd(){ return this.loginuser.get('Password')}
 
-  constructor(private http : APIsService ,  private router : Router) { }
+  constructor(private http : APIsService ,  private router : Router) {
+    var alreadylogin = JSON.parse(localStorage.getItem('userdetails'));
+    if(alreadylogin !== null){
+      var id = btoa(alreadylogin.id);
+     this.router.navigate(['/profile/'+id]);
+    }else{
+      this.router.navigate(['/login']);
+    }
+  }
 
   ngOnInit(): void {
     localStorage.setItem('sessionuser',this.loginuser.value)
   }
 
   dataobj : any ='';
+
 
   loggeduser(){
     var name = this.loginuser.get('UserName').value;
@@ -34,10 +43,12 @@ export class LoginComponent implements OnInit {
       alert("invalid Username/Password...!!")
     }
     else{
-      this.http.login(this.loginuser.value).subscribe((data)=>{
+      this.http.login(this.loginuser.value).subscribe((data)=>{ 
         this.dataobj = data;
-        localStorage.setItem('token',this.dataobj.token)
-        this.router.navigate(['/profile']);
+        localStorage.setItem('token',this.dataobj.token);
+        localStorage.setItem('userdetails',JSON.stringify(data));
+        var id = btoa(this.dataobj.id);
+        this.router.navigate(['/profile/'+id]);
      }
      ,(error)=>{
       alert("invalid Username/Password...!!")
@@ -46,5 +57,4 @@ export class LoginComponent implements OnInit {
     }
    
   }
-
 }

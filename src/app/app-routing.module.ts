@@ -34,19 +34,20 @@ import { ServicesComponent } from './arces/pages/services/services.component';
 import { SubmitListingComponent } from './arces/pages/submit-listing/submit-listing.component';
 import { ErrorComponent } from './arces/pages/error/error.component';
 import { AuthGuard } from './auth.guard';
+import { ForgotpasswordComponent } from './arces/pages/forgotpassword/forgotpassword.component';
 
 
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
-  {path:'home-v2',component:HomeTwoComponent},
+  {path:'home-v2',canActivate : [AuthGuard],component:HomeTwoComponent},
   {path:'home-v3',component:HomeThreeComponent},
   {path:'home-v4',component:HomeFourComponent},
   {path:'home-v5',component:HomeFiveComponent},
   {path:'about',component:AboutComponent},
   {path:'agency',component:AgencyComponent},
-  {path:'agency-detail',component:AgencyDetailComponent},
+  {path:'agency-detail',canActivate : [AuthGuard],component:AgencyDetailComponent},
   {path:'agent',component:AgentComponent},
   {path:'agent-detail',component:AgentDetailComponent},
   {path:'blog-grid',component:BlogGridComponent},
@@ -61,17 +62,18 @@ const routes: Routes = [
   {path:'listing-list',component:ListingListComponent},
   {path:'listing-map',component:ListingMapComponent},
   {path:'listing-map/:mlsno',component:ListingMapComponent},
-  {path:'listing-detail-v1/:id',component:ListingDetailOneComponent},
+  {path:'listing-detail-v1/:propid/:refno',component:ListingDetailOneComponent},
   {path:'listing-detail-v2',component:ListingDetailTwoComponent},
   {path:'listing-detail-v3',component:ListingDetailThreeComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'pricing',component:PricingComponent},
-  {path:'profile',canActivate : [AuthGuard],component:ProfileComponent},
+  {path:'profile/:id',canActivate : [AuthGuard],component:ProfileComponent},
   {path:'profile-listing',canActivate : [AuthGuard],component:ProfileListingComponent},
   {path:'profile-saved-listing',component:ProfileSavedListingComponent},
   {path:'services',component:ServicesComponent},
   {path:'submit-listing',component:SubmitListingComponent},
+  {path:'forgetpassoword',component:ForgotpasswordComponent},
   {path:'**',component:ErrorComponent}
 ];
 
